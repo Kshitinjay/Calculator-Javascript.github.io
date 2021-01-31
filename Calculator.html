@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body {
+        text-align: center;
+        background-color: #eec0c6;
+        /* background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%); */
+      }
+      /* .container {
+        border: 2px solid red;
+      } */
+      h1 {
+        font-size: 50px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .calculator {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input {
+        margin: 20px;
+        width: 200px;
+        height: 30px;
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		border-bottom: 2px solid black;
+        padding: 0 20px;
+        font-size: 20px;
+		background: none;
+      }
+      button {
+        height: 60px;
+        width: 60px;
+        /* padding: 15px 25px; */
+        font-size: 15px;
+        font-weight: 600;
+        background-color: #7ee8fa;
+      }
+      button:hover {
+        background-color: #eec0c6;
+        background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="calculator">
+        <h1>JavaScript Calculator</h1>
+        <input type="text" id="input" />
+        <table>
+          <tr>
+            <td><button>(</button></td>
+            <td><button>)</button></td>
+            <td><button id="clr">C</button></td>
+            <td><button>%</button></td>
+          </tr>
+          <tr>
+            <td><button id="block7">7</button></td>
+            <td><button id="block8">8</button></td>
+            <td><button id="block9">9</button></td>
+            <td><button id="multiply">X</button></td>
+          </tr>
+          <tr>
+            <td><button id="block4">4</button></td>
+            <td><button id="block5">5</button></td>
+            <td><button id="block6">6</button></td>
+            <td><button id="minus">-</button></td>
+          </tr>
+          <tr>
+            <td><button id="block1">1</button></td>
+            <td><button id="block2">2</button></td>
+            <td><button id="block3">3</button></td>
+            <td><button id="plus">+</button></td>
+          </tr>
+          <tr>
+            <td><button id="block0">0</button></td>
+            <td><button id="dot">.</button></td>
+            <td><button id="divide">/</button></td>
+            <td><button id="ans">=</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      let screenData = document.getElementById("input");
+      let buttons = document.querySelectorAll("button");
+      let str = "";
+
+      for (let x of buttons) {
+        x.addEventListener("click", (btn) => {
+          let buttonData = btn.target.innerText;
+          //   console.log(buttonData);
+
+          if (buttonData == "C") {
+            str = "";
+            screenData.value = str;
+          } else if (buttonData === "X") {
+            buttonData = "*";
+            str += buttonData;
+            screenData.value = str;
+          } else if (buttonData == "=") {
+            screenData.value = eval(str);
+            str = "";
+          } else {
+            str += buttonData;
+            screenData.value = str;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
